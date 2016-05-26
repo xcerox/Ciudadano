@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.ciudadano.facade.impl;
+package org.ciudadano.ejb.facade.impl;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.ciudadano.facade.AbstractFacade;
-import org.ciudadano.facade.CiudadanoFacade;
+import org.ciudadano.ejb.facade.AbstractFacade;
+import org.ciudadano.ejb.facade.CiudadanoFacade;
 import org.ciudadano.model.Ciudadano;
 
 /**

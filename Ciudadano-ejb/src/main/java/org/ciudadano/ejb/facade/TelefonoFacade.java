@@ -1,5 +1,5 @@
 
-package org.ciudadano.facade;
+package org.ciudadano.ejb.facade;
 
 import javax.ejb.Local;
 import org.ciudadano.model.Telefono;

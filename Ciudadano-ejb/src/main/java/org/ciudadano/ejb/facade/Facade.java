@@ -1,5 +1,5 @@
 
-package org.ciudadano.facade;
+package org.ciudadano.ejb.facade;
 
 import java.util.List;
 
