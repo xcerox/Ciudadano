@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+ 
+    <mapping  map-id="ciudadano">
+        <class-a>org.ciudadano.model.Ciudadano</class-a>
+        <class-b>org.ciudadano.dto.CiudadanoDto</class-b>
+        <field>
+           <a>id</a>
+           <b>id</b>
+        </field>
+        <field>
+           <a>nombre</a>
+           <b>nombre</b>
+        </field>
+        <field>
+           <a>apellido</a>
+           <b>apellido</b>
+        </field>
+        <field>
+           <a>sexo</a>
+           <b>sexo</b>
+        </field>
+        <field>
+           <a>fechaNacimiento</a>
+           <b>fechaNacimiento</b>
+        </field>
+        <field>
+           <a>direccion</a>
+           <b>direccion</b>
+        </field>
+        <field>
+           <a>correoElectronico</a>
+           <b>correoElectronico</b>
+        </field>
+    </mapping>
+</mappings>
