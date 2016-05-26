@@ -1,7 +1,7 @@
 
 package org.ciudadano.exeption;
 
-public class NotInstanceException extends Exception {
+public class NotInstanceException extends RuntimeException {
 
     public NotInstanceException() {
         this("no se a podido inicializar la clase");
