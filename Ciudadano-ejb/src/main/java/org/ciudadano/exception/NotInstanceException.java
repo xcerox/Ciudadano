@@ -1,5 +1,5 @@
 
-package org.ciudadano.exeption;
+package org.ciudadano.exception;
 
 public class NotInstanceException extends RuntimeException {
 

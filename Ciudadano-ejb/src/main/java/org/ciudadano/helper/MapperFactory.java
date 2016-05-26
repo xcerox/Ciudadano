@@ -3,7 +3,7 @@ package org.ciudadano.helper;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.ciudadano.exeption.NotInstanceException;
+import org.ciudadano.exception.NotInstanceException;
 import org.dozer.DozerBeanMapper;
 import org.dozer.MappingException;
 
