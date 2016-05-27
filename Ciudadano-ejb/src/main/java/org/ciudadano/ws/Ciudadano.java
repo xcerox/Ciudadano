@@ -7,7 +7,6 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ejb.Stateless;
-import javax.ws.rs.NotFoundException;
 import org.ciudadano.dto.CiudadanoDto;
 import org.ciudadano.ejb.service.CiudadanoService;
 import org.ciudadano.exception.NotFoundValueException;

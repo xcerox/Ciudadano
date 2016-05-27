@@ -13,8 +13,8 @@
         <h:form id="frmCiudadanos">
             <p:growl sticky="false"  showDetail="true" />
             <p:dataTable id="dtCiudadano" widgetVar="dtCiudadano" var="ciudadano" 
-                         value="#{controllerTest.all}" rowKey="#{ciudadano.id}" 
-                         selection="#{controllerTest.ciudadanoCurrent}" emptyMessage="No hay ciudadanos con estos criterios" 
+                         value="#{ciudadanoController.all}" rowKey="#{ciudadano.id}" 
+                         selection="#{CiudadanoController.ciudadanoCurrent}" emptyMessage="No hay ciudadanos con estos criterios" 
                          selectionMode="single" rows="10" paginator="true">
 
                 <p:column headerText="Nombre" filterBy="#{ciudadano.nombre}" filterMatchMode="contains"> 

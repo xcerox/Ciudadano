@@ -14,10 +14,8 @@ public abstract class AbstractFacade<T,K> {
     }
     
     public T create(T entity) {
-        getEntityManager().getTransaction().begin();
         getEntityManager().persist(entity);
         getEntityManager().flush();
-        getEntityManager().getTransaction().commit();
         return entity;
     }
 

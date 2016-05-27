@@ -22,7 +22,7 @@ public class CiudadanoServiceImpl implements CiudadanoService {
     @Override
     public CiudadanoDto create(CiudadanoDto entity) {
         ciudadano = CiudadanoCopy.toCiudadano(entity);
-        ciudadano = ciudadanoFacadeImpl.update(ciudadano);
+        ciudadano = ciudadanoFacadeImpl.create(ciudadano);
         return CiudadanoCopy.toCiudadanoDto(ciudadano);
     }
 

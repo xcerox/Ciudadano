@@ -14,7 +14,7 @@
             </ui:define>
 
             <ui:define name="content">
-                <h2>Registro de usuario</h2>
+                <h2>Eres un nuevo Ciudadano, Registrate!!</h2>
                 <hr />
                 <h:form id="frmRegistrarUsuario">
 
@@ -22,37 +22,47 @@
                     <h:panelGrid columns="3" id="panelGeneral">
 
                         <p:outputLabel value="Nombre:" for="txtNombre" />
-                        <p:inputText id="txtNombre" label="Nombre" value="#{controllerTest.newCiudadano.nombre}" placeholder="juan" >
+                        <p:inputText id="txtNombre" label="Nombre" value="#{ciudadanoController.newCiudadano.nombre}" placeholder="juan" 
+                                     required="true" requiredMessage="Completar Apellido">
                             <f:validator validatorId="empty" />
                         </p:inputText>
-                        <p:message for="txtNombre" display="icon"/>
-
+                        <p:message for="txtNombre"/>
+                        
                         <p:outputLabel value="Apellido:" for="txtApellido" />
-                        <p:inputText id="txtApellido" label="Apellido" value="#{controllerTest.newCiudadano.apellido}" placeholder="peres" >
+                        <p:inputText id="txtApellido" label="Apellido" value="#{ciudadanoController.newCiudadano.apellido}" placeholder="peres" 
+                                     required="true" requiredMessage="Completar Apellido">
                             <f:validator validatorId="empty" />
                         </p:inputText>
                         <p:message for="txtApellido"/>
                         
                         <p:outputLabel value="Sexo:"  for="radioSexo" />
-                        <p:selectOneRadio id="radioSexo" label="Sexo" value="#{controllerTest.newCiudadano.sexo}" >
+                        <p:selectOneRadio id="radioSexo" label="Sexo" value="#{ciudadanoController.newCiudadano.sexo}" 
+                                          required="true" requiredMessage="Seleccionar Tipo de sexo">
                             <f:selectItem  itemLabel="Masculino" itemValue="M"/>
-                            <f:selectItem  itemLabel="Femenino" itemValue="false"/>
+                            <f:selectItem  itemLabel="Femenino" itemValue="F"/>
                         </p:selectOneRadio>
-                        <div></div>
+                        <p:message for="radioSexo"/>
+                                                
+                        <p:outputLabel value="Fecha Nacimiento:" for="txtFechaNacimiento" />
+                        <p:calendar id="txtFechaNacimiento" label="Fecha Nacimiento" value="#{ciudadanoController.newCiudadano.fechaNacimiento}" 
+                                    showOn="button" pattern="dd/MM/yyyy" placeholder="dd/mm/yyyy" required="true" requiredMessage="Completar Fecha de Nacimiento"/>
+                        <p:message for="txtFechaNacimiento"/>
+                        
+                        <p:outputLabel value="Direccion:" for="txtDireccion" />
+                        <p:inputText id="txtDireccion" label="Direccion" value="#{ciudadanoController.newCiudadano.apellido}" placeholder="Av. Paseo" >
+                        </p:inputText>
+                        <p:message for="txtDireccion"/>
 
                         <p:outputLabel value="Correo Electronico:" for="txtCorreoElectronico" /> 
-                        <p:inputText id="txtCorreoElectronico" label="Correo Electronico" value="#{controllerTest.newCiudadano.correoElectronico}" placeholder="e@correo.com">
+                        <p:inputText id="txtCorreoElectronico" label="Correo Electronico" value="#{ciudadanoController.newCiudadano.correoElectronico}" placeholder="e@correo.com" 
+                                     required="true" requiredMessage="Completar correo Electronico">
                             <f:validator validatorId="empty" />
                             <f:validator validatorId="email" />
                         </p:inputText>
                         <p:message for="txtCorreoElectronico"/>
 
-                        <p:outputLabel value="Fecha Nacimiento:" for="txtFechaNacimiento" />
-                        <p:calendar id="txtFechaNacimiento" label="Fecha Nacimiento" value="#{controllerTest.newCiudadano.fechaNacimiento}" showOn="button" pattern="dd/MM/yyyy" required="true" requiredMessage="Fecha de nacimiento es requerido" placeholder="dd/mm/yyyy"/>
-                        <p:message for="txtFechaNacimiento"/>
-
                         <div></div>
-                        <p:commandButton value="Registrar Usario" actionListener="#{controllerTest.register()}" update="frmRegistrarUsuario" icon="ui-icon-check" />
+                        <p:commandButton value="Registrar" actionListener="#{ciudadanoController.registerNew}" update="frmRegistrarUsuario" />
                     </h:panelGrid>
                 </h:form>
             </ui:define>

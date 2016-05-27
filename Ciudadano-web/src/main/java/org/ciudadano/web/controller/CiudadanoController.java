@@ -3,6 +3,9 @@ package org.ciudadano.web.controller;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 import javax.xml.ws.WebServiceRef;
 import org.ciudadano.web.client.Ciudadano;
 import org.ciudadano.web.client.CiudadanoDto;
@@ -41,20 +44,31 @@ public class CiudadanoController {
         this.newCiudadano = newCiudadano;
     }
     
-    public void register()
-    {
+    public void registerNew(ActionEvent event)throws ValidatorException{
+        CiudadanoDto ciudadanoCreated = null;
+        try{
+            Ciudadano port = service.getCiudadanoPort();
+            ciudadanoCreated = port.create(newCiudadano);
+        }catch(Exception error){
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "hiciste click en registrar"));
+        }
         
+        if(ciudadanoCreated.getId() != null){
+            newCiudadano = new CiudadanoDto();
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_INFO, "Informacion", "Ciudadano registrado"));
+        }
     }
-    public List<CiudadanoDto>  getAll(){
+    
+    public List<CiudadanoDto> getAll(){
         return findAll();
     }
 
-    private List<CiudadanoDto> findAll() {
+    private List<CiudadanoDto> findAll()throws ValidatorException{
         try{
             Ciudadano port = service.getCiudadanoPort();
             return port.findAll();
         }catch(Exception error){
-            return null;
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", error.getMessage()));
         }
     }
 
