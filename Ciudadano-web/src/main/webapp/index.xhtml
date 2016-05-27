@@ -1,18 +1,51 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./Layaut/TemplateBase.xhtml">
+                template="./layaut/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="top">
-
     </ui:define>
 
     <ui:define name="content">
+ 
+        <h:form id="frmCiudadanos">
+            <p:growl sticky="false"  showDetail="true" />
+            <p:dataTable id="dtCiudadano" widgetVar="dtCiudadano" var="ciudadano" 
+                         value="#{controllerTest.all}" rowKey="#{ciudadano.id}" 
+                         selection="#{controllerTest.ciudadanoCurrent}" emptyMessage="No hay ciudadanos con estos criterios" 
+                         selectionMode="single" rows="10" paginator="true">
+
+                <p:column headerText="Nombre" filterBy="#{ciudadano.nombre}" filterMatchMode="contains"> 
+                    <p:outputLabel value="#{ciudadano.nombre}" />
+                </p:column>
+
+                <p:column headerText="Apellidos" filterBy="#{ciudadano.apellido}" filterMatchMode="contains">
+                    <p:outputLabel value="#{ciudadano.apellido}" />
+                </p:column>
+
+                <p:column headerText="Sexo" filterBy="#{ciudadano.sexo}" filterMatchMode="contains">
+                    <p:outputLabel value="#{ciudadano.sexo}" />
+                </p:column>
+                
+                <p:column headerText="Fecha Nacimiento" filterBy="#{ciudadano.fechaNacimiento}" filterMatchMode="contains">
+                    <p:outputLabel value="#{ciudadano.fechaNacimiento}" />
+                </p:column>
+
+                <p:column headerText="Direccion" filterBy="#{ciudadano.direccion}" filterMatchMode="contains">
+                    <p:outputLabel value="#{ciudadano.direccion}"/>
+                </p:column>
+
+                <p:column headerText="Correo Electronico" filterBy="#{ciudadano.correoElectronico}" filterMatchMode="contains">
+                    <p:outputLabel value="#{ciudadano.correoElectronico}"/>
+                </p:column>
+            </p:dataTable> 
+        </h:form>
 
     </ui:define>
 
     <ui:define name="bottom">
-
     </ui:define>
 
 </ui:composition>

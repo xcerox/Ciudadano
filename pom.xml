@@ -13,7 +13,7 @@
   <name>Ciudadano</name>
   <modules>
     <module>Ciudadano-ear</module>
-    <module>Ciudadano-web</module>
     <module>Ciudadano-ejb</module>
+    <module>Ciudadano-web</module>
   </modules>
 </project>
