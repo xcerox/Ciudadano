@@ -59,7 +59,7 @@ public class CiudadanoServiceImpl implements CiudadanoService {
     @Override
     public void remove(CiudadanoDto entity) {
         ciudadano = CiudadanoCopy.toCiudadano(entity);
-        ciudadanoFacadeImpl.update(ciudadano);
+        ciudadanoFacadeImpl.remove(ciudadano);
     }
 
 }

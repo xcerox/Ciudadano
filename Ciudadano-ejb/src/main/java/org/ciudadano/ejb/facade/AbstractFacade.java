@@ -20,16 +20,12 @@ public abstract class AbstractFacade<T,K> {
     }
 
     public T update(T entity) {
-        getEntityManager().getTransaction().begin();
         getEntityManager().merge(entity);
-        getEntityManager().getTransaction().commit();
         return entity;
     }
 
     public void remove(T entity) {
-        getEntityManager().getTransaction().begin();
         getEntityManager().remove(entity);
-        getEntityManager().getTransaction().commit();
     }
 
     public T find(K id) {

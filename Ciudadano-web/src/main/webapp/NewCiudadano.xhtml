@@ -16,14 +16,14 @@
             <ui:define name="content">
                 <h2>Eres un nuevo Ciudadano, Registrate!!</h2>
                 <hr />
-                <h:form id="frmRegistrarUsuario">
+                <h:form id="frmRegistrarCiudadano">
 
                     <p:growl id="mensajeGeneral" showDetail="true" sticky="false"/>
                     <h:panelGrid columns="3" id="panelGeneral">
 
                         <p:outputLabel value="Nombre:" for="txtNombre" />
                         <p:inputText id="txtNombre" label="Nombre" value="#{ciudadanoController.newCiudadano.nombre}" placeholder="juan" 
-                                     required="true" requiredMessage="Completar Apellido">
+                                     required="true" requiredMessage="Completar Nombre">
                             <f:validator validatorId="empty" />
                         </p:inputText>
                         <p:message for="txtNombre"/>
@@ -33,7 +33,7 @@
                                      required="true" requiredMessage="Completar Apellido">
                             <f:validator validatorId="empty" />
                         </p:inputText>
-                        <p:message for="txtApellido"/>
+                        <p:message for="txtNombre"/>
                         
                         <p:outputLabel value="Sexo:"  for="radioSexo" />
                         <p:selectOneRadio id="radioSexo" label="Sexo" value="#{ciudadanoController.newCiudadano.sexo}" 
@@ -49,7 +49,7 @@
                         <p:message for="txtFechaNacimiento"/>
                         
                         <p:outputLabel value="Direccion:" for="txtDireccion" />
-                        <p:inputText id="txtDireccion" label="Direccion" value="#{ciudadanoController.newCiudadano.apellido}" placeholder="Av. Paseo" >
+                        <p:inputText id="txtDireccion" label="Direccion" value="#{ciudadanoController.newCiudadano.direccion}" placeholder="Av. Paseo" >
                         </p:inputText>
                         <p:message for="txtDireccion"/>
 
@@ -62,7 +62,7 @@
                         <p:message for="txtCorreoElectronico"/>
 
                         <div></div>
-                        <p:commandButton value="Registrar" actionListener="#{ciudadanoController.registerNew}" update="frmRegistrarUsuario" />
+                        <p:commandButton value="Registrar" actionListener="#{ciudadanoController.registerNew}" update="frmRegistrarCiudadano" />
                     </h:panelGrid>
                 </h:form>
             </ui:define>

@@ -9,14 +9,16 @@
     </ui:define>
 
     <ui:define name="content">
- 
+
         <h:form id="frmCiudadanos">
             <p:growl sticky="false"  showDetail="true" />
             <p:dataTable id="dtCiudadano" widgetVar="dtCiudadano" var="ciudadano" 
                          value="#{ciudadanoController.all}" rowKey="#{ciudadano.id}" 
-                         selection="#{CiudadanoController.ciudadanoCurrent}" emptyMessage="No hay ciudadanos con estos criterios" 
+                         selection="#{ciudadanoController.ciudadanoCurrent}" emptyMessage="No hay ciudadanos con estos criterios" 
                          selectionMode="single" rows="10" paginator="true">
-
+                
+                <p:ajax event="rowSelect" update=":frmCiudadanos:pnDetalleCiudadano" oncomplete="PF('dlgDetalleciudadano').show()" />
+                
                 <p:column headerText="Nombre" filterBy="#{ciudadano.nombre}" filterMatchMode="contains"> 
                     <p:outputLabel value="#{ciudadano.nombre}" />
                 </p:column>
@@ -41,8 +43,21 @@
                     <p:outputLabel value="#{ciudadano.correoElectronico}"/>
                 </p:column>
             </p:dataTable> 
-        </h:form>
+            
+            <p:dialog header="Opciones de ciudadano"  widgetVar="dlgDetalleciudadano" modal="true" resizable="false" showEffect="explode" hideEffect="explode" >
+            <p:outputPanel id="pnDetalleCiudadano" >
+            <h:panelGrid columns="3"> 
+                <p:outputLabel value="Nombre:" for="txtNombre"/>
+                <p:outputLabel id="txtNombre" value="#{ciudadanoController.ciudadanoCurrent.nombre}" />   
+                <div></div>
 
+                <p:commandButton value="Telefonos" />
+                <p:commandButton value="Actualizar" />
+                <p:commandButton value="Borrar" actionListener="#{ciudadanoController.deleteCiudadanoCurrent}" update="frmCiudadanos" />
+            </h:panelGrid>
+            </p:outputPanel>
+            </p:dialog>
+        </h:form>
     </ui:define>
 
     <ui:define name="bottom">
