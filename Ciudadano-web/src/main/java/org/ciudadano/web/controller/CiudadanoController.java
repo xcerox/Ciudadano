@@ -2,6 +2,7 @@
 package org.ciudadano.web.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -19,7 +20,6 @@ public class CiudadanoController implements Serializable{
     private Ciudadano_Service service;
 
     private CiudadanoDto ciudadanoCurrent;
-    private CiudadanoDto newCiudadano;
     
     public CiudadanoController() {
     }
@@ -27,7 +27,7 @@ public class CiudadanoController implements Serializable{
     @PostConstruct
     public void init(){
         ciudadanoCurrent = new CiudadanoDto();
-        newCiudadano = new CiudadanoDto();
+     
     }
 
     public CiudadanoDto getCiudadanoCurrent() {
@@ -37,39 +37,12 @@ public class CiudadanoController implements Serializable{
     public void setCiudadanoCurrent(CiudadanoDto ciudadanoCurrent) {
         this.ciudadanoCurrent = ciudadanoCurrent;
     }
-
-    public CiudadanoDto getNewCiudadano() {
-        return newCiudadano;
-    }
-
-    public void setNewCiudadano(CiudadanoDto newCiudadano) {
-        this.newCiudadano = newCiudadano;
-    }
-    
-    public void registerNew(ActionEvent event){
-        FacesContext context = FacesContext.getCurrentInstance();
-        CiudadanoDto ciudadanoCreated = null;
-        
-        try{
-            Ciudadano port = service.getCiudadanoPort();
-            ciudadanoCreated = port.create(newCiudadano);
-        }catch(Exception error){
-            throw new RuntimeException(error.getMessage());
-        }finally{
-            if(ciudadanoCreated != null){
-                newCiudadano = new CiudadanoDto();
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Successful",  "Usuario Creado") );
-            }else{
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Successful",  "No se puedo crear el ciudadano"));
-            }
-        }
-    }
     
     public List<CiudadanoDto> getAll(){
         try {
             return findAll();
         } catch (Exception e) {
-            return null;
+            return new ArrayList<CiudadanoDto>();
         }
     }
 

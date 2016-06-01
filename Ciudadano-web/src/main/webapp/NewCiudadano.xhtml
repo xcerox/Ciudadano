@@ -22,21 +22,21 @@
                     <h:panelGrid columns="3" id="panelGeneral">
 
                         <p:outputLabel value="Nombre:" for="txtNombre" />
-                        <p:inputText id="txtNombre" label="Nombre" value="#{ciudadanoController.newCiudadano.nombre}" placeholder="juan" 
+                        <p:inputText id="txtNombre" label="Nombre" value="#{controllerNewCiudadano.ciudadano.nombre}" placeholder="juan" 
                                      required="true" requiredMessage="Completar Nombre">
                             <f:validator validatorId="empty" />
                         </p:inputText>
                         <p:message for="txtNombre"/>
                         
                         <p:outputLabel value="Apellido:" for="txtApellido" />
-                        <p:inputText id="txtApellido" label="Apellido" value="#{ciudadanoController.newCiudadano.apellido}" placeholder="peres" 
+                        <p:inputText id="txtApellido" label="Apellido" value="#{controllerNewCiudadano.ciudadano.apellido}" placeholder="peres" 
                                      required="true" requiredMessage="Completar Apellido">
                             <f:validator validatorId="empty" />
                         </p:inputText>
-                        <p:message for="txtNombre"/>
+                        <p:message for="txtApellido"/>
                         
                         <p:outputLabel value="Sexo:"  for="radioSexo" />
-                        <p:selectOneRadio id="radioSexo" label="Sexo" value="#{ciudadanoController.newCiudadano.sexo}" 
+                        <p:selectOneRadio id="radioSexo" label="Sexo" value="#{controllerNewCiudadano.ciudadano.sexo}" 
                                           required="true" requiredMessage="Seleccionar Tipo de sexo">
                             <f:selectItem  itemLabel="Masculino" itemValue="M"/>
                             <f:selectItem  itemLabel="Femenino" itemValue="F"/>
@@ -44,27 +44,39 @@
                         <p:message for="radioSexo"/>
                                                 
                         <p:outputLabel value="Fecha Nacimiento:" for="txtFechaNacimiento" />
-                        <p:calendar id="txtFechaNacimiento" label="Fecha Nacimiento" value="#{ciudadanoController.newCiudadano.fechaNacimiento}" 
+                        <p:calendar id="txtFechaNacimiento" label="Fecha Nacimiento" value="#{controllerNewCiudadano.ciudadano.fechaNacimiento}" 
                                     showOn="button" pattern="dd/MM/yyyy" placeholder="dd/mm/yyyy" required="true" requiredMessage="Completar Fecha de Nacimiento"/>
                         <p:message for="txtFechaNacimiento"/>
                         
                         <p:outputLabel value="Direccion:" for="txtDireccion" />
-                        <p:inputText id="txtDireccion" label="Direccion" value="#{ciudadanoController.newCiudadano.direccion}" placeholder="Av. Paseo" >
+                        <p:inputText id="txtDireccion" label="Direccion" value="#{controllerNewCiudadano.ciudadano.direccion}" placeholder="Av. Paseo" >
                         </p:inputText>
                         <p:message for="txtDireccion"/>
 
                         <p:outputLabel value="Correo Electronico:" for="txtCorreoElectronico" /> 
-                        <p:inputText id="txtCorreoElectronico" label="Correo Electronico" value="#{ciudadanoController.newCiudadano.correoElectronico}" placeholder="e@correo.com" 
+                        <p:inputText id="txtCorreoElectronico" label="Correo Electronico" value="#{controllerNewCiudadano.ciudadano.correoElectronico}" placeholder="e@correo.com" 
                                      required="true" requiredMessage="Completar correo Electronico">
                             <f:validator validatorId="empty" />
                             <f:validator validatorId="email" />
                         </p:inputText>
                         <p:message for="txtCorreoElectronico"/>
-
-                        <div></div>
-                        <p:commandButton value="Registrar" actionListener="#{ciudadanoController.registerNew}" update="frmRegistrarCiudadano" />
-                    </h:panelGrid>
-                </h:form>
+                        
+                        <p:commandButton icon="ui-icon-plus" value="Telefono" actionListener="#{controllerNewCiudadano.addTelefono}" update="frmRegistrarCiudadano"/>        
+                        <p:dataTable id="dtTelefonos" var="telefono" value="#{controllerNewCiudadano.ciudadano.telefonos}" editable="true" editMode="cell" style="width: 180px">
+                            
+                            <p:column headerText="Telefonos">
+                                   <p:cellEditor>
+                                       <f:facet name="output"><h:outputText value="#{telefono.telefono}"/></f:facet>
+                                       <f:facet name="input"><p:inputText id="modelInput" value="#{telefono.telefono}"/></f:facet>
+                                   </p:cellEditor>
+                               </p:column>
+                        </p:dataTable>
+                </h:panelGrid>
+                <hr />
+                <p:commandButton value="Registrar" actionListener="#{controllerNewCiudadano.register}" update="frmRegistrarCiudadano" />    
+                 
+                </h:form>  
+                      
             </ui:define>
 
             <ui:define name="bottom">
